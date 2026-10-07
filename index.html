@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>زمن — خط تطورك</title>
+
+<link rel="icon" type="image/jpeg" href="icon.JPG">
+<link rel="apple-touch-icon" href="icon.JPG">
+
+<meta name="theme-color" content="#111827">
+<meta name="description" content="زمن — وثّق رحلتك، تطورك، مشاريعك وإنجازاتك عبر الزمن.">
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --bg:#f5f7fa;
+  --surface:#ffffff;
+  --surface2:#f1f4f8;
+  --text:#172033;
+  --muted:#718096;
+  --primary:#7c3aed;
+  --primaryDark:#6d28d9;
+  --blue:#2563eb;
+  --green:#16a34a;
+  --orange:#ea580c;
+  --red:#dc2626;
+  --gold:#d97706;
+  --border:#e5e7eb;
+  --shadow:0 12px 35px rgba(15,23,42,.08);
+}
+
+body{
+  font-family:"Tajawal","Cairo","Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  line-height:1.7;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+.app{
+  width:min(1200px,100%);
+  margin:auto;
+  padding:20px;
+}
+
+/* HEADER */
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  margin-bottom:25px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.brand-icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  object-fit:cover;
+  box-shadow:var(--shadow);
+}
+
+.brand h1{
+  font-size:25px;
+  font-weight:900;
+}
+
+.brand p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.icon-btn{
+  width:45px;
+  height:45px;
+  border-radius:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  transition:.2s;
+}
+
+.icon-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow);
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  color:white;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(168,85,247,.32),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #111827,
+      #4c1d95
+    );
+  border-radius:30px;
+  padding:36px;
+  margin-bottom:25px;
+  box-shadow:var(--shadow);
+}
+
+.hero:before,
+.hero:after{
+  content:"";
+  position:absolute;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:50%;
+}
+
+.hero:before{
+  width:260px;
+  height:260px;
+  left:-120px;
+  bottom:-140px;
+}
+
+.hero:after{
+  width:150px;
+  height:150px;
+  right:-70px;
+  bottom:-80px;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+}
+
+.badge{
+  display:inline-flex;
+  padding:6px 12px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  font-size:12px;
+  margin-bottom:12px;
+}
+
+.hero h2{
+  font-size:34px;
+  line-height:1.35;
+  margin-bottom:8px;
+}
+
+.hero p{
+  color:#ede9fe;
+  font-size:15px;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.stat{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 5px 20px rgba(15,23,42,.04);
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.stat-value{
+  font-size:27px;
+  font-weight:900;
+}
+
+/* TOOLBAR */
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  padding:15px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:22px;
+  margin-bottom:25px;
+  box-shadow:0 5px 20px rgba(15,23,42,.04);
+}
+
+.search{
+  flex:1;
+  position:relative;
+}
+
+.search span{
+  position:absolute;
+  right:15px;
+  top:9px;
+  font-size:20px;
+}
+
+.search input{
+  width:100%;
+  height:50px;
+  padding:0 45px 0 15px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:15px;
+  color:var(--text);
+  outline:none;
+}
+
+.select{
+  width:180px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:0 14px;
+  color:var(--text);
+  outline:none;
+}
+
+.add-btn{
+  background:var(--primary);
+  color:white;
+  border-radius:15px;
+  padding:0 20px;
+  font-weight:800;
+  white-space:nowrap;
+  transition:.2s;
+}
+
+.add-btn:hover{
+  background:var(--primaryDark);
+  transform:translateY(-2px);
+}
+
+/* TIMELINE */
+
+.timeline-section{
+  position:relative;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.section-title h3{
+  font-size:20px;
+  font-weight:900;
+}
+
+.section-title span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.timeline{
+  position:relative;
+  padding:10px 0;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:26px;
+  width:3px;
+  background:
+    linear-gradient(
+      to bottom,
+      #c4b5fd,
+      #ddd6fe,
+      #e5e7eb
+    );
+  border-radius:10px;
+}
+
+.timeline-item{
+  position:relative;
+  padding-right:65px;
+  margin-bottom:25px;
+}
+
+.timeline-dot{
+  position:absolute;
+  right:15px;
+  top:22px;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:var(--primary);
+  border:6px solid #ede9fe;
+  z-index:2;
+}
+
+.timeline-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(15,23,42,.04);
+  transition:.2s;
+}
+
+.timeline-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+
+.timeline-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+}
+
+.timeline-title{
+  font-size:19px;
+  font-weight:900;
+}
+
+.timeline-date{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:2px;
+}
+
+.favorite{
+  background:transparent;
+  font-size:23px;
+  color:#cbd5e1;
+}
+
+.favorite.active{
+  color:#f59e0b;
+}
+
+.timeline-description{
+  color:#4b5563;
+  font-size:14px;
+  margin:14px 0;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:15px;
+}
+
+.tag{
+  padding:4px 10px;
+  border-radius:999px;
+  background:#f3e8ff;
+  color:#7e22ce;
+  font-size:11px;
+  font-weight:800;
+}
+
+.insights{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.insight{
+  background:var(--surface2);
+  border-radius:14px;
+  padding:12px;
+}
+
+.insight small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-bottom:4px;
+}
+
+.insight strong{
+  display:block;
+  font-size:12px;
+}
+
+.timeline-actions{
+  display:flex;
+  gap:8px;
+}
+
+.timeline-actions button{
+  flex:1;
+  padding:9px;
+  background:var(--surface2);
+  border-radius:12px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.timeline-actions .delete{
+  color:var(--red);
+}
+
+/* EMPTY */
+
+.empty{
+  background:var(--surface);
+  border:1px dashed var(--border);
+  border-radius:24px;
+  padding:70px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.empty-icon{
+  font-size:52px;
+  margin-bottom:10px;
+}
+
+.empty h3{
+  color:var(--text);
+  margin-bottom:5px;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(15,23,42,.55);
+  backdrop-filter:blur(8px);
+  z-index:1000;
+}
+
+.modal.active{
+  display:flex;
+}
+
+.modal-box{
+  width:min(680px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--surface);
+  border-radius:28px;
+  padding:25px;
+  box-shadow:0 30px 80px rgba(0,0,0,.2);
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.modal-header h2{
+  font-size:22px;
+}
+
+.close{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  background:var(--surface2);
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--surface2);
+  color:var(--text);
+  outline:none;
+}
+
+.field textarea{
+  min-height:85px;
+  resize:vertical;
+}
+
+.modal-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.modal-footer{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+.modal-footer button{
+  flex:1;
+  height:48px;
+  border-radius:14px;
+  font-weight:800;
+}
+
+.cancel{
+  background:var(--surface2);
+}
+
+.save{
+  background:var(--primary);
+  color:white;
+}
+
+/* SETTINGS */
+
+.settings{
+  display:none;
+}
+
+.settings.active{
+  display:block;
+}
+
+.settings-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
+  margin-bottom:15px;
+}
+
+.settings-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:15px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.settings-row:last-child{
+  border-bottom:0;
+}
+
+.danger{
+  background:#fee2e2;
+  color:#b91c1c;
+  padding:10px 15px;
+  border-radius:12px;
+  font-weight:800;
+}
+
+.export{
+  background:var(--surface2);
+  padding:10px 15px;
+  border-radius:12px;
+  font-weight:800;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  padding:35px 10px 15px;
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+  .app{
+    padding:14px;
+  }
+
+  .brand-icon{
+    width:50px;
+    height:50px;
+  }
+
+  .brand h1{
+    font-size:21px;
+  }
+
+  .hero{
+    padding:25px 20px;
+    border-radius:24px;
+  }
+
+  .hero h2{
+    font-size:27px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .toolbar{
+    flex-wrap:wrap;
+  }
+
+  .search{
+    flex-basis:100%;
+  }
+
+  .select,
+  .add-btn{
+    flex:1;
+    width:auto;
+  }
+
+  .timeline:before{
+    right:19px;
+  }
+
+  .timeline-item{
+    padding-right:50px;
+  }
+
+  .timeline-dot{
+    right:8px;
+  }
+
+  .insights{
+    grid-template-columns:1fr;
+  }
+
+  .modal-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+
+  <div class="brand">
+
+    <img
+      src="icon.JPG"
+      class="brand-icon"
+      alt="زمن"
+    >
+
+    <div>
+      <h1>زمن</h1>
+      <p>خط تطورك عبر الزمن</p>
+    </div>
+
+  </div>
+
+  <button
+    class="icon-btn"
+    onclick="toggleSettings()"
+    title="الإعدادات"
+  >
+    ⚙️
+  </button>
+
+</header>
+
+
+<main id="mainContent">
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <span class="badge">
+      ⏳ رحلتك تستحق أن تُوثّق
+    </span>
+
+    <h2>
+      لا تتذكر أين بدأت فقط… شاهد أين وصلت.
+    </h2>
+
+    <p>
+      سجّل محطاتك، مشاريعك، ما تعلمته وما تغيّر في رحلتك،
+      ثم ارجع لترى تطورك عبر الزمن.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="stats">
+
+  <div class="stat">
+
+    <div class="stat-label">
+      المحطات
+    </div>
+
+    <div
+      class="stat-value"
+      id="totalCount"
+    >
+      0
+    </div>
+
+  </div>
+
+
+  <div class="stat">
+
+    <div class="stat-label">
+      الإنجازات
+    </div>
+
+    <div
+      class="stat-value"
+      id="achievementCount"
+    >
+      0
+    </div>
+
+  </div>
+
+
+  <div class="stat">
+
+    <div class="stat-label">
+      المجالات
+    </div>
+
+    <div
+      class="stat-value"
+      id="fieldCount"
+    >
+      0
+    </div>
+
+  </div>
+
+
+  <div class="stat">
+
+    <div class="stat-label">
+      المفضلة
+    </div>
+
+    <div
+      class="stat-value"
+      id="favoriteCount"
+    >
+      0
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="toolbar">
+
+  <div class="search">
+
+    <span>⌕</span>
+
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="ابحث في رحلتك..."
+      oninput="renderTimeline()"
+    >
+
+  </div>
+
+
+  <select
+    id="fieldFilter"
+    class="select"
+    onchange="renderTimeline()"
+  >
+
+    <option value="all">
+      كل المجالات
+    </option>
+
+    <option value="برمجة">
+      برمجة
+    </option>
+
+    <option value="تصميم">
+      تصميم
+    </option>
+
+    <option value="قراءة">
+      قراءة
+    </option>
+
+    <option value="تعلم">
+      تعلم
+    </option>
+
+    <option value="مشروع">
+      مشروع
+    </option>
+
+    <option value="إنجاز شخصي">
+      إنجاز شخصي
+    </option>
+
+    <option value="أخرى">
+      أخرى
+    </option>
+
+  </select>
+
+
+  <button
+    class="add-btn"
+    onclick="openModal()"
+  >
+    ＋ محطة جديدة
+  </button>
+
+</section>
+
+
+<section class="timeline-section">
+
+  <div class="section-title">
+
+    <h3>
+      خط الزمن
+    </h3>
+
+    <span id="resultsCount">
+      0 محطة
+    </span>
+
+  </div>
+
+
+  <div
+    id="timeline"
+    class="timeline"
+  ></div>
+
+</section>
+
+</main>
+
+
+<!-- SETTINGS -->
+
+<section
+  id="settings"
+  class="settings"
+>
+
+  <div class="section-title">
+
+    <h3>
+      الإعدادات
+    </h3>
+
+  </div>
+
+
+  <div class="settings-card">
+
+    <div class="settings-row">
+
+      <div>
+
+        <strong>
+          البيانات
+        </strong>
+
+        <p
+          style="
+            color:var(--muted);
+            font-size:12px;
+          "
+        >
+          تُحفظ محطاتك داخل هذا المتصفح.
+        </p>
+
+      </div>
+
+
+      <button
+        class="danger"
+        onclick="clearAll()"
+      >
+        حذف الكل
+      </button>
+
+    </div>
+
+
+    <div class="settings-row">
+
+      <div>
+
+        <strong>
+          تصدير الرحلة
+        </strong>
+
+        <p
+          style="
+            color:var(--muted);
+            font-size:12px;
+          "
+        >
+          احفظ نسخة احتياطية من خطك الزمني.
+        </p>
+
+      </div>
+
+
+      <button
+        class="export"
+        onclick="exportData()"
+      >
+        تصدير
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="add-btn"
+    style="height:48px"
+    onclick="toggleSettings()"
+  >
+    العودة إلى خط الزمن
+  </button>
+
+</section>
+
+
+<footer>
+  زمن — سجّل ما تغيّر، لتعرف كيف تغيّرت.
+</footer>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div
+  id="modal"
+  class="modal"
+>
+
+<div class="modal-box">
+
+  <div class="modal-header">
+
+    <h2 id="modalTitle">
+      إضافة محطة زمنية
+    </h2>
+
+    <button
+      class="close"
+      onclick="closeModal()"
+    >
+      ✕
+    </button>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      عنوان المحطة
+    </label>
+
+    <input
+      id="titleInput"
+      type="text"
+      placeholder="مثال: أطلقت أول مشروع لي"
+    >
+
+  </div>
+
+
+  <div class="modal-grid">
+
+    <div class="field">
+
+      <label>
+        التاريخ
+      </label>
+
+      <input
+        id="dateInput"
+        type="date"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        المجال
+      </label>
+
+      <select id="fieldInput">
+
+        <option value="برمجة">
+          برمجة
+        </option>
+
+        <option value="تصميم">
+          تصميم
+        </option>
+
+        <option value="قراءة">
+          قراءة
+        </option>
+
+        <option value="تعلم">
+          تعلم
+        </option>
+
+        <option value="مشروع">
+          مشروع
+        </option>
+
+        <option value="إنجاز شخصي">
+          إنجاز شخصي
+        </option>
+
+        <option value="أخرى">
+          أخرى
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      ماذا حدث؟
+    </label>
+
+    <textarea
+      id="descriptionInput"
+      placeholder="صف المحطة وما الذي حدث فيها..."
+    ></textarea>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      ماذا تعلمت؟
+    </label>
+
+    <textarea
+      id="learnedInput"
+      placeholder="ما المعرفة أو المهارة التي اكتسبتها؟"
+    ></textarea>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      ما الذي تغيّر؟
+    </label>
+
+    <textarea
+      id="changedInput"
+      placeholder="كيف أثرت هذه المحطة في مسارك؟"
+    ></textarea>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      الإنجاز أو النتيجة
+    </label>
+
+    <textarea
+      id="achievementInput"
+      placeholder="ما النتيجة التي وصلت إليها؟"
+    ></textarea>
+
+  </div>
+
+
+  <div class="modal-footer">
+
+    <button
+      class="cancel"
+      onclick="closeModal()"
+    >
+      إلغاء
+    </button>
+
+    <button
+      class="save"
+      onclick="saveEntry()"
+    >
+      حفظ المحطة
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+"use strict";
+
+
+const STORAGE_KEY = "zaman_timeline";
+
+let entries =
+  JSON.parse(
+    localStorage.getItem(STORAGE_KEY) || "[]"
+  );
+
+let editingId = null;
+
+
+/* =========================
+   MODAL
+========================= */
+
+function openModal(id = null){
+
+  editingId = id;
+
+  document
+    .getElementById("modal")
+    .classList
+    .add("active");
+
+
+  if(id){
+
+    const entry =
+      entries.find(
+        item => item.id === id
+      );
+
+    if(!entry) return;
+
+
+    document.getElementById("modalTitle")
+      .textContent =
+        "تعديل المحطة";
+
+
+    document.getElementById("titleInput")
+      .value =
+        entry.title;
+
+
+    document.getElementById("dateInput")
+      .value =
+        entry.date;
+
+
+    document.getElementById("fieldInput")
+      .value =
+        entry.field;
+
+
+    document.getElementById("descriptionInput")
+      .value =
+        entry.description || "";
+
+
+    document.getElementById("learnedInput")
+      .value =
+        entry.learned || "";
+
+
+    document.getElementById("changedInput")
+      .value =
+        entry.changed || "";
+
+
+    document.getElementById("achievementInput")
+      .value =
+        entry.achievement || "";
+
+  }else{
+
+    document.getElementById("modalTitle")
+      .textContent =
+        "إضافة محطة زمنية";
+
+
+    document.getElementById("titleInput")
+      .value = "";
+
+
+    document.getElementById("dateInput")
+      .value =
+        new Date()
+          .toISOString()
+          .split("T")[0];
+
+
+    document.getElementById("fieldInput")
+      .value =
+        "برمجة";
+
+
+    document.getElementById("descriptionInput")
+      .value = "";
+
+
+    document.getElementById("learnedInput")
+      .value = "";
+
+
+    document.getElementById("changedInput")
+      .value = "";
+
+
+    document.getElementById("achievementInput")
+      .value = "";
+
+  }
+
+}
+
+
+function closeModal(){
+
+  document
+    .getElementById("modal")
+    .classList
+    .remove("active");
+
+  editingId = null;
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+function saveEntry(){
+
+  const title =
+    document.getElementById("titleInput")
+      .value
+      .trim();
+
+
+  const date =
+    document.getElementById("dateInput")
+      .value;
+
+
+  const field =
+    document.getElementById("fieldInput")
+      .value;
+
+
+  const description =
+    document.getElementById("descriptionInput")
+      .value
+      .trim();
+
+
+  const learned =
+    document.getElementById("learnedInput")
+      .value
+      .trim();
+
+
+  const changed =
+    document.getElementById("changedInput")
+      .value
+      .trim();
+
+
+  const achievement =
+    document.getElementById("achievementInput")
+      .value
+      .trim();
+
+
+  if(!title){
+
+    alert(
+      "اكتب عنوان المحطة أولًا."
+    );
+
+    return;
+
+  }
+
+
+  if(!date){
+
+    alert(
+      "اختر تاريخ المحطة."
+    );
+
+    return;
+
+  }
+
+
+  if(editingId){
+
+    const index =
+      entries.findIndex(
+        item => item.id === editingId
+      );
+
+
+    if(index === -1) return;
+
+
+    entries[index].title =
+      title;
+
+    entries[index].date =
+      date;
+
+    entries[index].field =
+      field;
+
+    entries[index].description =
+      description;
+
+    entries[index].learned =
+      learned;
+
+    entries[index].changed =
+      changed;
+
+    entries[index].achievement =
+      achievement;
+
+    entries[index].updatedAt =
+      new Date().toISOString();
+
+  }else{
+
+    entries.push({
+
+      id:Date.now(),
+
+      title,
+
+      date,
+
+      field,
+
+      description,
+
+      learned,
+
+      changed,
+
+      achievement,
+
+      favorite:false,
+
+      createdAt:
+        new Date().toISOString(),
+
+      updatedAt:
+        new Date().toISOString()
+
+    });
+
+  }
+
+
+  saveData();
+
+  closeModal();
+
+  renderTimeline();
+
+}
+
+
+/* =========================
+   SAVE DATA
+========================= */
+
+function saveData(){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(entries)
+  );
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function renderTimeline(){
+
+  const container =
+    document.getElementById("timeline");
+
+
+  const search =
+    document.getElementById("searchInput")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const field =
+    document.getElementById("fieldFilter")
+      .value;
+
+
+  const filtered =
+    entries
+
+      .filter(entry => {
+
+        const text =
+          [
+            entry.title,
+            entry.description,
+            entry.learned,
+            entry.changed,
+            entry.achievement,
+            entry.field
+          ]
+          .join(" ")
+          .toLowerCase();
+
+
+        const matchesSearch =
+          text.includes(search);
+
+
+        const matchesField =
+          field === "all" ||
+          entry.field === field;
+
+
+        return (
+          matchesSearch &&
+          matchesField
+        );
+
+      })
+
+      .sort(
+        (a,b) =>
+          new Date(b.date) -
+          new Date(a.date)
+      );
+
+
+  document.getElementById("resultsCount")
+    .textContent =
+      filtered.length + " محطة";
+
+
+  if(!filtered.length){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          ⏳
+        </div>
+
+        <h3>
+          لم تبدأ خطك الزمني بعد
+        </h3>
+
+        <p>
+          أضف أول محطة في رحلتك وشاهدها تكبر مع الوقت.
+        </p>
+
+      </div>
+
+    `;
+
+    updateStats();
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    filtered
+      .map(entry => {
+
+        const date =
+          formatDate(entry.date);
+
+
+        return `
+
+        <article class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+
+          <div class="timeline-card">
+
+
+            <div class="timeline-top">
+
+              <div>
+
+                <div class="timeline-title">
+
+                  ${escapeHTML(entry.title)}
+
+                </div>
+
+                <div class="timeline-date">
+
+                  ${date}
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="favorite ${
+                  entry.favorite
+                  ? "active"
+                  : ""
+                }"
+                onclick="toggleFavorite(${entry.id})"
+              >
+
+                ${
+                  entry.favorite
+                  ? "★"
+                  : "☆"
+                }
+
+              </button>
+
+            </div>
+
+
+            ${
+              entry.description
+              ?
+              `
+              <div class="timeline-description">
+
+                ${escapeHTML(entry.description)}
+
+              </div>
+              `
+              :
+              ""
+            }
+
+
+            <div class="tags">
+
+              <span class="tag">
+
+                ${escapeHTML(entry.field)}
+
+              </span>
+
+            </div>
+
+
+            <div class="insights">
+
+
+              <div class="insight">
+
+                <small>
+                  ماذا تعلمت؟
+                </small>
+
+                <strong>
+
+                  ${
+                    entry.learned
+                    ?
+                    escapeHTML(
+                      shorten(
+                        entry.learned,
+                        60
+                      )
+                    )
+                    :
+                    "لم يُسجل بعد"
+                  }
+
+                </strong>
+
+              </div>
+
+
+              <div class="insight">
+
+                <small>
+                  ما الذي تغيّر؟
+                </small>
+
+                <strong>
+
+                  ${
+                    entry.changed
+                    ?
+                    escapeHTML(
+                      shorten(
+                        entry.changed,
+                        60
+                      )
+                    )
+                    :
+                    "لم يُسجل بعد"
+                  }
+
+                </strong>
+
+              </div>
+
+
+              <div class="insight">
+
+                <small>
+                  النتيجة
+                </small>
+
+                <strong>
+
+                  ${
+                    entry.achievement
+                    ?
+                    escapeHTML(
+                      shorten(
+                        entry.achievement,
+                        60
+                      )
+                    )
+                    :
+                    "لم تُسجل بعد"
+                  }
+
+                </strong>
+
+              </div>
+
+
+            </div>
+
+
+            <div class="timeline-actions">
+
+              <button
+                onclick="openModal(${entry.id})"
+              >
+                ✏️ تعديل
+              </button>
+
+
+              <button
+                class="delete"
+                onclick="deleteEntry(${entry.id})"
+              >
+                حذف
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </article>
+
+        `;
+
+      })
+      .join("");
+
+
+  updateStats();
+
+}
+
+
+/* =========================
+   FORMAT DATE
+========================= */
+
+function formatDate(date){
+
+  return new Date(
+    date + "T00:00:00"
+  )
+  .toLocaleDateString(
+    "ar-EG",
+    {
+      day:"numeric",
+      month:"long",
+      year:"numeric"
+    }
+  );
+
+}
+
+
+/* =========================
+   SHORTEN
+========================= */
+
+function shorten(text,max){
+
+  if(text.length <= max)
+    return text;
+
+  return text.substring(
+    0,
+    max
+  ) + "…";
+
+}
+
+
+/* =========================
+   FAVORITE
+========================= */
+
+function toggleFavorite(id){
+
+  const entry =
+    entries.find(
+      item => item.id === id
+    );
+
+
+  if(!entry) return;
+
+
+  entry.favorite =
+    !entry.favorite;
+
+
+  saveData();
+
+  renderTimeline();
+
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+function deleteEntry(id){
+
+  const entry =
+    entries.find(
+      item => item.id === id
+    );
+
+
+  if(!entry) return;
+
+
+  if(!confirm(
+    "هل تريد حذف هذه المحطة؟"
+  )) return;
+
+
+  entries =
+    entries.filter(
+      item => item.id !== id
+    );
+
+
+  saveData();
+
+  renderTimeline();
+
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+function updateStats(){
+
+  document.getElementById("totalCount")
+    .textContent =
+      entries.length;
+
+
+  document.getElementById("achievementCount")
+    .textContent =
+      entries.filter(
+        entry =>
+          entry.achievement &&
+          entry.achievement.trim()
+      ).length;
+
+
+  const fields =
+    new Set(
+      entries.map(
+        entry => entry.field
+      )
+    );
+
+
+  document.getElementById("fieldCount")
+    .textContent =
+      fields.size;
+
+
+  document.getElementById("favoriteCount")
+    .textContent =
+      entries.filter(
+        entry => entry.favorite
+      ).length;
+
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+function toggleSettings(){
+
+  const main =
+    document.getElementById("mainContent");
+
+  const settings =
+    document.getElementById("settings");
+
+
+  if(
+    settings.classList.contains("active")
+  ){
+
+    settings.classList.remove("active");
+
+    main.style.display = "";
+
+  }else{
+
+    settings.classList.add("active");
+
+    main.style.display = "none";
+
+  }
+
+}
+
+
+/* =========================
+   EXPORT
+========================= */
+
+function exportData(){
+
+  const data =
+    JSON.stringify(
+      entries,
+      null,
+      2
+    );
+
+
+  const blob =
+    new Blob(
+      [data],
+      {
+        type:"application/json"
+      }
+    );
+
+
+  const url =
+    URL.createObjectURL(blob);
+
+
+  const a =
+    document.createElement("a");
+
+
+  a.href = url;
+
+  a.download =
+    "zaman-timeline-backup.json";
+
+
+  a.click();
+
+
+  URL.revokeObjectURL(url);
+
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+function clearAll(){
+
+  if(!entries.length){
+
+    alert(
+      "لا توجد محطات لحذفها."
+    );
+
+    return;
+
+  }
+
+
+  if(!confirm(
+    "سيتم حذف خطك الزمني بالكامل. هل أنت متأكد؟"
+  )) return;
+
+
+  entries = [];
+
+  localStorage.removeItem(
+    STORAGE_KEY
+  );
+
+  renderTimeline();
+
+}
+
+
+/* =========================
+   ESCAPE
+========================= */
+
+function escapeHTML(value){
+
+  return String(value)
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+/* =========================
+   MODAL OUTSIDE
+========================= */
+
+document
+  .getElementById("modal")
+  .addEventListener(
+    "click",
+    function(e){
+
+      if(e.target === this){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+/* =========================
+   START
+========================= */
+
+renderTimeline();
+
+</script>
+
+</body>
+</html>
